@@ -1,19 +1,10 @@
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen min-w-full bg-slate-500">
-      <h2 className="text-4xl text-red-400">Title</h2>
+    <div className="min-h-screen items-center flex flex-col justify-center min-w-full bg-slate-200">
+      <h2 className="text-4xl text-black">Home</h2>
+      <Link href={"/users"} className="hover:scale-105">Pagina de usuarios</Link>
     </div>
   );
 }
