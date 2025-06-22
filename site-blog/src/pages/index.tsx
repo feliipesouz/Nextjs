@@ -1,13 +1,25 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Header } from "@/components/header";
+import { Geist } from 'next/font/google';
+import { Geist_Mono } from 'next/font/google';
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export default function Home() {
   return (
-    <div className="min-h-screen items-center flex flex-col justify-center min-w-full bg-slate-200">
-      <h2 className="text-4xl text-black">Home</h2>
-      <Link href={"/users"} className="hover:scale-105">Pagina de usuarios</Link>
-
-      <Button variant={"secondary"}>Botão</Button>
+    <div
+      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
+    >
+      <Header />
     </div>
   );
 }
+
+
