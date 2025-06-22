@@ -1,0 +1,1 @@
+https://www.figma.com/design/tF6dTvcWFXabD1IN236WWe/Landing-Page-e-Blog--Community-?node-id=3-376&p=f&t=salnr1L0v9iKefco-0
