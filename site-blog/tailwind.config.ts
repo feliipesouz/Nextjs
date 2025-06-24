@@ -1,18 +1,20 @@
-import type { Config } from "tailwindcss"
+import type { Config } from 'tailwindcss';
+
 export default {
 	darkMode: ['class'],
 	content: [
-		'./src/pages/**/*.{js,jsx,tsx,mdx}',
-		'./src/components/**/*.{js,jsx,tsx,mdx}',
-		'./src/app/**/*.{js,jsx,tsx,mdx}',
+		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
+		'./src/templates/**/*.{js,ts,jsx,tsx,mdx}',
+		'./src/app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
 		container: {
 			center: true,
-			padding: "2rem",
+			padding: '2rem',
 			screens: {
-				"2xk": "1200px"
-			}
+				'2xl': '1200px',
+			},
 		},
 		extend: {
 			colors: {
@@ -49,6 +51,7 @@ export default {
 				inter: ['Inter', 'sans-serif'],
 			},
 			fontSize: {
+				// Headings - PT Sans Caption
 				'heading-hg': ['40px', { lineHeight: '120%', fontWeight: '700' }],
 				'heading-xl': ['32px', { lineHeight: '120%', fontWeight: '700' }],
 				'heading-lg': ['28px', { lineHeight: '120%', fontWeight: '700' }],
@@ -56,16 +59,20 @@ export default {
 				'heading-sm': ['20px', { lineHeight: '120%', fontWeight: '700' }],
 				'heading-xs': ['16px', { lineHeight: '120%', fontWeight: '700' }],
 
+				// Body - Inter
 				'body-md': ['16px', { lineHeight: '150%', fontWeight: '400' }],
 				'body-sm': ['14px', { lineHeight: '150%', fontWeight: '400' }],
 				'body-xs': ['12px', { lineHeight: '150%', fontWeight: '400' }],
 
+				// Body Tag
+				'body-tag': ['12px', { lineHeight: '100%', fontWeight: '400' }],
+
+				// Action - Inter
 				'action-md': ['16px', { lineHeight: 'normal', fontWeight: '500' }],
 				'action-sm': ['14px', { lineHeight: 'normal', fontWeight: '500' }],
 			},
-		}
+		},
 	},
 	// eslint-disable-next-line @typescript-eslint/no-require-imports
-	plugins: [require("tailwindcss-animate")],
-} satisfies Config
-
+	plugins: [require('tailwindcss-animate')],
+} satisfies Config;
