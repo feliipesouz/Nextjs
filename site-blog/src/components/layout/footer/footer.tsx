@@ -1,5 +1,5 @@
+import { Logo } from "@/components/logo";
 import Link from "next/link";
-import { Logo } from "../logo/logo";
 
 export const Footer = () => {
   return (
