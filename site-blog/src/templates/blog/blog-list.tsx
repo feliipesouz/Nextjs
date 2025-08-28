@@ -1,6 +1,7 @@
 import { Search } from "@/components/search";
 import { useRouter } from "next/router";
-import { PostCard } from "./components";
+import { PostCard } from "./components/post-card/post-card";
+import { PostGridCard } from "./components/post-grid-card";
 
 export function BlogList() {
   const router = useRouter();
@@ -24,17 +25,19 @@ export function BlogList() {
           <Search />
         </div>
       </header>
-      <PostCard
-        title="Transformando seu negócio em uma loja virtual"
-        description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online..."
-        date="20/12/2024"
-        slug="/transformando"
-        image="/assets/primeiro-post.png"
-        author={{
-          avatar: '/customer-02.png',
-          name: 'Aspen Dokidis',
-        }}
-      />
+      <PostGridCard>
+        <PostCard
+          title="Transformando seu negócio em uma loja virtual"
+          description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online..."
+          date="20/12/2024"
+          slug="/transformando"
+          image="/assets/primeiro-post.png"
+          author={{
+            avatar: '/customer-02.png',
+            name: 'Aspen Dokidis',
+          }}
+        />
+      </PostGridCard>
     </div>
   );
 }
