@@ -87,6 +87,7 @@ export default function PostPage() {
                   <Button
                     key={provider.key}
                     variant="outline"
+                    className=''
                   >
                     {provider.providerName}
                   </Button>
