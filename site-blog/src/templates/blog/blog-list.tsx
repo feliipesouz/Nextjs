@@ -2,10 +2,14 @@ import { Search } from "@/components/search";
 import { useRouter } from "next/router";
 import { PostCard } from "./components/post-card/post-card";
 import { PostGridCard } from "./components/post-grid-card";
-import { allPosts } from "contentlayer/generated";
+import { Post } from "contentlayer/generated";
 import { Inbox } from "lucide-react";
 
-export function BlogList() {
+export type BlogListProps = {
+  posts: Post[]
+}
+
+export function BlogList({ posts }: BlogListProps) {
   const router = useRouter();
   const query = router.query.q as string;
   const pageTitle = query
@@ -13,10 +17,10 @@ export function BlogList() {
     : "Dicas e estratégias para impulsionar seu negócio";
 
   const postList = query
-    ? allPosts.filter((post) =>
+    ? posts.filter((post) =>
       post.title.toLocaleLowerCase()?.includes(query.toLocaleLowerCase())
     )
-    : allPosts;
+    : posts;
   const hasPosts = postList?.length > 0;
 
   return (
