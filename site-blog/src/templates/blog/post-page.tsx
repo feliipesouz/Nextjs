@@ -11,19 +11,17 @@ import {
 } from '@/components/ui/breadcrumb';
 import { Avatar } from '@/components/avatar';
 import { Markdown } from '@/components/markdown';
-import { useRouter } from 'next/router';
-import { allPosts } from "contentlayer/generated";
 import { Button } from '@/components/ui/button';
 import { useShare } from '@/hooks/use-share';
+import { Post } from 'contentlayer/generated';
 
+export type PostPageProps = {
+  post: Post
+}
 
-export default function PostPagee() {
-  const router = useRouter()
-  const slug = router.query.slug as string
-  const post = allPosts.find((post) => post.slug.toLowerCase() === slug.toLowerCase())!
-
+export default function PostPagee({ post }: PostPageProps) {
   const publishedDate = new Date(post?.date).toLocaleDateString('pt-BR');
-  const postUrl = `https://site.set/blog/${slug}`;
+  const postUrl = `https://site.set/blog/${post.slug}`;
 
   const { shareButtons } = useShare({
     url: postUrl,
@@ -108,7 +106,6 @@ export default function PostPagee() {
               </div>
             </div>
           </aside>
-
         </div>
       </div>
     </main>
