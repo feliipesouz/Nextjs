@@ -1,4 +1,4 @@
-import PostPage from "@/pages/blog-page/[slug]"
+import { PostPage } from "@/templates/blog"
 import { allPosts } from "contentlayer/generated"
 import { notFound } from "next/navigation"
 

@@ -1,7 +1,9 @@
-
+import { Post } from 'contentlayer/generated';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { Avatar } from '@/components/avatar';
+import { Markdown } from '@/components/markdown';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,25 +11,15 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import { Avatar } from '@/components/avatar';
-import { Markdown } from '@/components/markdown';
-import { Button } from '@/components/ui/button';
-import { useShare } from '@/hooks/use-share';
-import { Post } from 'contentlayer/generated';
+import { PostShare } from './components/post-share';
 
 export type PostPageProps = {
-  post: Post
-}
+  post: Post;
+};
 
-export default function PostPagee({ post }: PostPageProps) {
+export const PostPage = ({ post }: PostPageProps) => {
   const publishedDate = new Date(post?.date).toLocaleDateString('pt-BR');
   const postUrl = `https://site.set/blog/${post.slug}`;
-
-  const { shareButtons } = useShare({
-    url: postUrl,
-    title: post.title,
-    text: post.description
-  })
 
   return (
     <main className="py-20 text-gray-100">
@@ -80,35 +72,18 @@ export default function PostPagee({ post }: PostPageProps) {
               </Avatar.Container>
             </header>
 
-            <div className='prose prove-invert max-w-none px-4 mt-12 md:px-6 lg:px-12'>
+            <div className="prose prose-invert max-w-none px-4 mt-12 md:px-6 lg:px-12">
               <Markdown content={post?.body.raw} />
             </div>
           </article>
 
-          <aside className="space-y-6">
-            <div className="rounder-lg bg-gray-700 md:p-6">
-              <h2 className="hidden md-block mb-4 text-heading-xs text-gray-100">Compartilhar</h2>
-
-              <div className="flex flex-wrap justify-between md:flex-col gap">
-                {shareButtons.map((provider) => (
-                  <Button
-                    key={provider.provider}
-                    onClick={provider.action}
-                    variant="outline"
-                    className='w-fit md:w-full justify-start gap-2'
-                  >
-                    {provider.icon}
-                    <span className='hidden md:block'>
-                      {provider.name}
-                    </span>
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </aside>
+          <PostShare
+            url={postUrl}
+            title={post?.title}
+            description={post?.description}
+          />
         </div>
       </div>
     </main>
   );
-}
-
+};
